@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roham Mohamadi — Biology Student &amp; Curious Mind, Tehran</title>
+<meta name="description" content="Roham Mohamadi is a NODET (SAMPAD) biology-track high school student in Tehran, exploring genetics, dentistry, and code. Official personal site.">
+<meta name="keywords" content="Roham Mohamadi, Roham Mohamadi Tehran, Roham Mohamadi biology, Roham Mohamadi student">
+<meta name="author" content="Roham Mohamadi">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://rohammohamadi.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Roham Mohamadi — Biology Student & Curious Mind">
+<meta property="og:description" content="Personal site of Roham Mohamadi: NODET (SAMPAD) biology-track student in Tehran, exploring genetics, dentistry, and programming.">
+<meta property="og:url" content="https://rohammohamadi.com/">
+<meta property="og:site_name" content="Roham Mohamadi">
+<meta property="profile:first_name" content="Roham">
+<meta property="profile:last_name" content="Mohamadi">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Roham Mohamadi — Biology Student & Curious Mind">
+<meta name="twitter:description" content="NODET (SAMPAD) biology-track student in Tehran, exploring genetics, dentistry, and programming.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%230a0a0d%22/><text x=%2250%22 y=%2266%22 font-size=%2260%22 fill=%22%23ff6b35%22 text-anchor=%22middle%22 font-family=%22Georgia%22>R</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Roham Mohamadi",
+  "alternateName": "Roham",
+  "url": "https://rohammohamadi.com/",
+  "jobTitle": "High School Student",
+  "affiliation": {
+    "@type": "EducationalOrganization",
+    "name": "NODET (SAMPAD) — National Organization for Development of Exceptional Talents"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tehran",
+    "addressCountry": "IR"
+  },
+  "knowsAbout": ["Biology", "Genetics", "Dentistry", "Programming", "Computer Science"],
+  "description": "Roham Mohamadi is a biology-track student at NODET (SAMPAD) in Tehran, interested in genetics, dentistry, and programming."
+}
+</script>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav-mark">RM</a>
+  <nav class="nav-links">
+    <a href="#about">About</a>
+    <a href="#interests">Interests</a>
+    <a href="#path">Path</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow reveal" id="hero-eyebrow">Tehran, Iran &mdash; NODET / SAMPAD, Biology Track</p>
+      <h1 class="hero-name reveal">
+        <span class="hero-name-line" id="hero-first-name">Roham</span>
+        <span class="hero-name-line hero-name-accent" id="hero-last-name">Mohamadi</span>
+      </h1>
+      <p class="hero-sub reveal" id="hero-subtitle">
+        A biology-track student who reads cells the way others read stories,
+        writes a little code on the side, and is curious whether dentistry
+        is where precision meets biology.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#about" class="btn btn-primary">Read my story</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg id="specimenSvg" viewBox="0 0 400 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- helix that resolves into a molar shape, drawn on scroll -->
+        <g id="helixGroup" stroke="#ff6b35" stroke-width="2.4" stroke-linecap="round" fill="none"></g>
+        <g id="rungGroup" stroke="#ffb347" stroke-width="1.6" stroke-linecap="round" opacity="0.75"></g>
+        <path id="molarPath" d="M130 430 C120 470, 140 500, 165 495 C180 492, 178 465, 190 465 C202 465, 200 494, 218 496 C244 499, 262 468, 250 428 C244 408, 224 398, 200 400 C176 398, 138 408, 130 430 Z"
+          stroke="#f5f0e8" stroke-width="2.2" fill="none" opacity="0"/>
+      </svg>
+      <span class="visual-caption">helix &rarr; molar, drawn in one line</span>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-head reveal">
+      <span class="eyebrow">01 &mdash; About</span>
+      <h2>Somewhere between a petri dish and a keyboard</h2>
+    </div>
+    <div class="about-grid">
+      <p class="about-lead reveal" id="about-lead">
+        I'm Roham, a biology-track student in the NODET (SAMPAD) system in Tehran &mdash;
+        a national program for students who lean hard into science early.
+        Biology is where I spend most of my attention: how cells organize
+        themselves, how genetics quietly writes the instructions for
+        everything alive.
+      </p>
+      <p class="about-detail reveal" id="about-detail">
+        Outside of biology, I've been teaching myself programming, mostly
+        because I like the same thing about code that I like about biology:
+        small, precise rules producing something much bigger than themselves.
+        I'm also increasingly interested in dentistry &mdash; a field that
+        sits right at the intersection of biological knowledge and exact,
+        hands-on craft. I'm based in Tehran for now, though I'm keeping an
+        open mind about studying abroad down the line.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section class="interests" id="interests">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 &mdash; Interests</span>
+      <h2>Three specimens under the lens</h2>
+    </div>
+    <div class="specimen-grid">
+      <article class="specimen-card reveal">
+        <div class="specimen-tag" id="card1-tag">SPECIMEN A</div>
+        <h3 id="card1-title">Biology</h3>
+        <p id="card1-desc">Cell biology, genetics, and the logic living systems run on. My main field of study, and the lens I use for almost everything else.</p>
+      </article>
+      <article class="specimen-card reveal">
+        <div class="specimen-tag" id="card2-tag">SPECIMEN B</div>
+        <h3 id="card2-title">Programming</h3>
+        <p id="card2-desc">Learning to build things with code &mdash; still early, but drawn to it for the same reason as biology: small rules, big results.</p>
+      </article>
+      <article class="specimen-card reveal">
+        <div class="specimen-tag" id="card3-tag">SPECIMEN C</div>
+        <h3 id="card3-title">Dentistry</h3>
+        <p id="card3-desc">A growing interest &mdash; biological knowledge applied by hand, with precision and care. One of the paths I'm considering seriously.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PATH / TIMELINE -->
+  <section class="path" id="path">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 &mdash; Path</span>
+      <h2>Where this is headed</h2>
+    </div>
+    <ol class="timeline">
+      <li class="timeline-item reveal">
+        <span class="timeline-index">01</span>
+        <div class="timeline-body">
+          <h3 id="tl1-title">Now</h3>
+          <p id="tl1-desc">Studying on the biology track at NODET (SAMPAD) in Tehran.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-index">02</span>
+        <div class="timeline-body">
+          <h3 id="tl2-title">Alongside</h3>
+          <p id="tl2-desc">Teaching myself the basics of programming, project by project.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-index">03</span>
+        <div class="timeline-body">
+          <h3 id="tl3-title">Considering</h3>
+          <p id="tl3-desc">Dentistry as a field where biology becomes something you do with your hands.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <span class="timeline-index">04</span>
+        <div class="timeline-body">
+          <h3 id="tl4-title">Ahead</h3>
+          <p id="tl4-desc">Staying open to studying abroad as the next step, wherever it leads.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="section-head reveal">
+      <span class="eyebrow">04 &mdash; Skills</span>
+      <h2>What I bring to the bench</h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-row">
+        <span class="skill-name" id="skill1-name">Biology fundamentals</span>
+        <div class="skill-bar" id="skill1-bar"><span style="--level:88%"></span></div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name" id="skill2-name">Genetics</span>
+        <div class="skill-bar" id="skill2-bar"><span style="--level:75%"></span></div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name" id="skill3-name">Programming basics</span>
+        <div class="skill-bar" id="skill3-bar"><span style="--level:55%"></span></div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-name" id="skill4-name">Scientific curiosity</span>
+        <div class="skill-bar" id="skill4-bar"><span style="--level:97%"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner reveal">
+      <span class="eyebrow">05 &mdash; Contact</span>
+      <h2>Say hello</h2>
+      <p id="contact-desc">Open to conversations about biology, code, dentistry, or where those three overlap.</p>
+      <a class="contact-email" id="contact-email" href="mailto:your-email@example.com">your-email@example.com</a>
+      <div class="contact-socials">
+        <a href="#" id="contact-linkedin" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" id="contact-github" aria-label="GitHub">GitHub</a>
+        <a href="#" id="contact-instagram" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Roham Mohamadi. Tehran, Iran. &middot; <a href="admin/" style="color:var(--gray);">Edit content</a></p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

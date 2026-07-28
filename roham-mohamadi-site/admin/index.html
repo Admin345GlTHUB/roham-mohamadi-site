@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Content — Roham Mohamadi</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a0a0d; --panel:#141319; --panel-2:#1c1a22;
+    --orange:#ff6b35; --amber:#ffb347; --bone:#f5f0e8; --gray:#8b8a92;
+    --line:rgba(245,240,232,0.1);
+    --display:"Fraunces", Georgia, serif;
+    --body:"Inter", -apple-system, sans-serif;
+    --mono:"JetBrains Mono", monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--void); color:var(--bone);
+    font-family:var(--body); min-height:100vh;
+    padding:4vh 5vw 8vh;
+  }
+  h1{font-family:var(--display); font-weight:600; font-size:1.9rem; margin:0 0 0.4rem;}
+  h1 span{color:var(--orange); font-style:italic;}
+  .sub{color:var(--gray); margin:0 0 2.5rem; font-size:0.95rem;}
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:1.8rem; margin-bottom:1.4rem; max-width:640px;
+  }
+  .card h2{
+    font-family:var(--display); font-weight:500; font-size:1.15rem;
+    margin:0 0 1.2rem; color:var(--amber);
+  }
+  label{
+    display:block; font-family:var(--mono); font-size:0.72rem;
+    letter-spacing:0.05em; text-transform:uppercase; color:var(--gray);
+    margin:1rem 0 0.4rem;
+  }
+  label:first-of-type{margin-top:0;}
+  input[type=text], input[type=password], input[type=number], textarea{
+    width:100%; background:var(--void); border:1px solid var(--line);
+    border-radius:8px; padding:0.7rem 0.9rem; color:var(--bone);
+    font-family:var(--body); font-size:0.92rem; resize:vertical;
+    transition:border-color 0.25s ease;
+  }
+  input:focus, textarea:focus{outline:none; border-color:var(--orange);}
+  textarea{min-height:70px; line-height:1.5;}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:1rem;}
+  .btn{
+    font-family:var(--mono); font-size:0.8rem; letter-spacing:0.04em;
+    text-transform:uppercase; padding:0.85rem 1.6rem; border-radius:999px;
+    border:none; cursor:pointer; transition:transform 0.25s ease, opacity 0.25s ease;
+  }
+  .btn-primary{background:var(--orange); color:var(--void); font-weight:600;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-primary:disabled{opacity:0.5; cursor:not-allowed; transform:none;}
+  .btn-ghost{background:transparent; border:1px solid var(--line); color:var(--bone);}
+  .btn-ghost:hover{border-color:var(--orange); color:var(--orange);}
+  .msg{
+    font-family:var(--mono); font-size:0.82rem; padding:0.9rem 1rem;
+    border-radius:10px; margin-bottom:1.4rem; max-width:640px; display:none;
+  }
+  .msg.show{display:block;}
+  .msg.ok{background:rgba(255,107,53,0.12); border:1px solid rgba(255,107,53,0.35); color:var(--amber);}
+  .msg.err{background:rgba(255,80,80,0.1); border:1px solid rgba(255,80,80,0.35); color:#ff8080;}
+  .top-bar{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; max-width:640px;}
+  .hint{color:var(--gray); font-size:0.82rem; margin-top:0.6rem; line-height:1.5;}
+  .hint a{color:var(--orange);}
+  #app{display:none;}
+  #loginScreen .card{max-width:460px;}
+  footer{margin-top:2.5rem; color:var(--gray); font-family:var(--mono); font-size:0.72rem;}
+  .section-actions{position:sticky; bottom:0; background:linear-gradient(to top, var(--void) 60%, transparent); padding:1.5rem 0 0.5rem; max-width:640px;}
+</style>
+</head>
+<body>
+
+<h1>Edit content for <span>Roham Mohamadi</span></h1>
+<p class="sub">Changes are committed straight to your GitHub repository.</p>
+
+<div id="loginScreen">
+  <div class="msg err" id="loginError"></div>
+  <div class="card">
+    <h2>Connect to GitHub</h2>
+    <label for="ghOwner">GitHub username</label>
+    <input type="text" id="ghOwner" placeholder="e.g. rohammohamadi">
+    <label for="ghRepo">Repository name</label>
+    <input type="text" id="ghRepo" placeholder="e.g. roham-mohamadi-site">
+    <label for="ghBranch">Branch</label>
+    <input type="text" id="ghBranch" value="main">
+    <label for="ghToken">Personal access token</label>
+    <input type="password" id="ghToken" placeholder="ghp_...">
+    <p class="hint">
+      Need a token? Go to GitHub &rarr; click your profile picture &rarr;
+      <b>Settings</b> &rarr; <b>Developer settings</b> &rarr;
+      <b>Personal access tokens</b> &rarr; <b>Fine-grained tokens</b> &rarr;
+      <b>Generate new token</b>. Under <b>Repository access</b>, pick
+      <b>Only select repositories</b> and choose this repo. Under
+      <b>Permissions &rarr; Contents</b>, set it to <b>Read and write</b>.
+      Copy the token and paste it above &mdash; keep it secret, it works like a password.
+    </p>
+    <div class="section-actions" style="position:static; background:none; padding-top:1.4rem;">
+      <button class="btn btn-primary" onclick="connect()">Connect</button>
+    </div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="top-bar">
+    <span class="hint" id="repoLabel"></span>
+    <button class="btn btn-ghost" onclick="logout()">Log out</button>
+  </div>
+  <div class="msg" id="statusMsg"></div>
+
+  <div class="card">
+    <h2>Hero</h2>
+    <label>Eyebrow line</label>
+    <input type="text" id="f_hero_eyebrow">
+    <div class="row2">
+      <div><label>First name</label><input type="text" id="f_hero_firstName"></div>
+      <div><label>Last name</label><input type="text" id="f_hero_lastName"></div>
+    </div>
+    <label>Subtitle</label>
+    <textarea id="f_hero_subtitle"></textarea>
+  </div>
+
+  <div class="card">
+    <h2>About</h2>
+    <label>Lead paragraph</label>
+    <textarea id="f_about_lead"></textarea>
+    <label>Detail paragraph</label>
+    <textarea id="f_about_detail"></textarea>
+  </div>
+
+  <div class="card">
+    <h2>Interests — 3 cards</h2>
+    <div id="interestsFields"></div>
+  </div>
+
+  <div class="card">
+    <h2>Path / Timeline — 4 steps</h2>
+    <div id="timelineFields"></div>
+  </div>
+
+  <div class="card">
+    <h2>Skills — 4 bars</h2>
+    <div id="skillsFields"></div>
+  </div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <label>Description</label>
+    <textarea id="f_contact_description"></textarea>
+    <label>Email</label>
+    <input type="text" id="f_contact_email">
+    <div class="row2">
+      <div><label>LinkedIn URL</label><input type="text" id="f_contact_linkedin"></div>
+      <div><label>GitHub URL</label><input type="text" id="f_contact_github"></div>
+    </div>
+    <label>Instagram URL</label>
+    <input type="text" id="f_contact_instagram">
+  </div>
+
+  <div class="section-actions">
+    <button class="btn btn-primary" id="saveBtn" onclick="save()">Save &amp; publish</button>
+  </div>
+</div>
+
+<footer>Site content lives at <code>data/content.json</code> in your repository.</footer>
+
+<script>
+let state = { owner:'', repo:'', branch:'main', token:'', sha:'' };
+
+function buildRepeatingFields(containerId, keys, fields){
+  const container = document.getElementById(containerId);
+  container.innerHTML = keys.map((key, i) => {
+    return `<div style="padding:0.9rem 0; border-top:${i>0 ? '1px solid var(--line)' : 'none'};">
+      <label style="margin-top:${i>0?'0.9rem':'0'};">${key.label}</label>
+      ${fields.map(f => `
+        <label>${f.label}</label>
+        ${f.type === 'textarea'
+          ? `<textarea id="f_${key.id}_${f.name}"></textarea>`
+          : `<input type="${f.type||'text'}" id="f_${key.id}_${f.name}">`}
+      `).join('')}
+    </div>`;
+  }).join('');
+}
+
+buildRepeatingFields('interestsFields',
+  [{id:'card1',label:'Card 1'},{id:'card2',label:'Card 2'},{id:'card3',label:'Card 3'}],
+  [{name:'tag',label:'Tag label'},{name:'title',label:'Title'},{name:'description',label:'Description',type:'textarea'}]
+);
+buildRepeatingFields('timelineFields',
+  [{id:'item1',label:'Step 1'},{id:'item2',label:'Step 2'},{id:'item3',label:'Step 3'},{id:'item4',label:'Step 4'}],
+  [{name:'title',label:'Title'},{name:'description',label:'Description',type:'textarea'}]
+);
+buildRepeatingFields('skillsFields',
+  [{id:'skill1',label:'Skill 1'},{id:'skill2',label:'Skill 2'},{id:'skill3',label:'Skill 3'},{id:'skill4',label:'Skill 4'}],
+  [{name:'name',label:'Name'},{name:'level',label:'Level (0-100)',type:'number'}]
+);
+
+function b64EncodeUnicode(str){
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p1) => String.fromCharCode('0x' + p1)));
+}
+function b64DecodeUnicode(str){
+  return decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+}
+
+function showMsg(id, text, type){
+  const el = document.getElementById(id);
+  el.textContent = text;
+  el.className = 'msg show ' + type;
+}
+
+async function connect(){
+  const owner = document.getElementById('ghOwner').value.trim();
+  const repo = document.getElementById('ghRepo').value.trim();
+  const branch = document.getElementById('ghBranch').value.trim() || 'main';
+  const token = document.getElementById('ghToken').value.trim();
+
+  if (!owner || !repo || !token){
+    showMsg('loginError', 'Please fill in username, repository name, and token.', 'err');
+    return;
+  }
+
+  try{
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/data/content.json?ref=${branch}`, {
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json' }
+    });
+    if (!res.ok){
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.message || `GitHub returned ${res.status}`);
+    }
+    const data = await res.json();
+    const content = JSON.parse(b64DecodeUnicode(data.content.replace(/\n/g, '')));
+
+    state = { owner, repo, branch, token, sha: data.sha };
+    sessionStorage.setItem('rm_admin_state', JSON.stringify(state));
+
+    fillForm(content);
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('repoLabel').textContent = `Connected to ${owner}/${repo} (${branch})`;
+  }catch(err){
+    showMsg('loginError', 'Could not connect: ' + err.message, 'err');
+  }
+}
+
+function fillForm(data){
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val ?? ''; };
+  set('f_hero_eyebrow', data.hero?.eyebrow);
+  set('f_hero_firstName', data.hero?.firstName);
+  set('f_hero_lastName', data.hero?.lastName);
+  set('f_hero_subtitle', data.hero?.subtitle);
+  set('f_about_lead', data.about?.lead);
+  set('f_about_detail', data.about?.detail);
+  ['card1','card2','card3'].forEach(k => {
+    set(`f_${k}_tag`, data.interests?.[k]?.tag);
+    set(`f_${k}_title`, data.interests?.[k]?.title);
+    set(`f_${k}_description`, data.interests?.[k]?.description);
+  });
+  ['item1','item2','item3','item4'].forEach(k => {
+    set(`f_${k}_title`, data.timeline?.[k]?.title);
+    set(`f_${k}_description`, data.timeline?.[k]?.description);
+  });
+  ['skill1','skill2','skill3','skill4'].forEach(k => {
+    set(`f_${k}_name`, data.skills?.[k]?.name);
+    set(`f_${k}_level`, data.skills?.[k]?.level);
+  });
+  set('f_contact_description', data.contact?.description);
+  set('f_contact_email', data.contact?.email);
+  set('f_contact_linkedin', data.contact?.linkedin);
+  set('f_contact_github', data.contact?.github);
+  set('f_contact_instagram', data.contact?.instagram);
+}
+
+function collectForm(){
+  const get = id => document.getElementById(id)?.value ?? '';
+  const obj = {
+    hero: {
+      eyebrow: get('f_hero_eyebrow'), firstName: get('f_hero_firstName'),
+      lastName: get('f_hero_lastName'), subtitle: get('f_hero_subtitle')
+    },
+    about: { lead: get('f_about_lead'), detail: get('f_about_detail') },
+    interests: {}, timeline: {}, skills: {},
+    contact: {
+      description: get('f_contact_description'), email: get('f_contact_email'),
+      linkedin: get('f_contact_linkedin'), github: get('f_contact_github'),
+      instagram: get('f_contact_instagram')
+    }
+  };
+  ['card1','card2','card3'].forEach(k => {
+    obj.interests[k] = { tag: get(`f_${k}_tag`), title: get(`f_${k}_title`), description: get(`f_${k}_description`) };
+  });
+  ['item1','item2','item3','item4'].forEach(k => {
+    obj.timeline[k] = { title: get(`f_${k}_title`), description: get(`f_${k}_description`) };
+  });
+  ['skill1','skill2','skill3','skill4'].forEach(k => {
+    obj.skills[k] = { name: get(`f_${k}_name`), level: Number(get(`f_${k}_level`)) || 0 };
+  });
+  return obj;
+}
+
+async function save(){
+  const btn = document.getElementById('saveBtn');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+  try{
+    const newContent = JSON.stringify(collectForm(), null, 2);
+    const res = await fetch(`https://api.github.com/repos/${state.owner}/${state.repo}/contents/data/content.json`, {
+      method: 'PUT',
+      headers: { Authorization: `token ${state.token}`, Accept: 'application/vnd.github+json' },
+      body: JSON.stringify({
+        message: 'Update site content via admin panel',
+        content: b64EncodeUnicode(newContent),
+        sha: state.sha,
+        branch: state.branch
+      })
+    });
+    if (!res.ok){
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.message || `GitHub returned ${res.status}`);
+    }
+    const data = await res.json();
+    state.sha = data.content.sha;
+    showMsg('statusMsg', 'Saved. Your live site will update in about a minute.', 'ok');
+  }catch(err){
+    showMsg('statusMsg', 'Save failed: ' + err.message, 'err');
+  }finally{
+    btn.disabled = false;
+    btn.textContent = 'Save & publish';
+  }
+}
+
+function logout(){
+  sessionStorage.removeItem('rm_admin_state');
+  location.reload();
+}
+
+// Restore session if already connected in this tab
+(function restore(){
+  const saved = sessionStorage.getItem('rm_admin_state');
+  if (!saved) return;
+  try{
+    const s = JSON.parse(saved);
+    document.getElementById('ghOwner').value = s.owner;
+    document.getElementById('ghRepo').value = s.repo;
+    document.getElementById('ghBranch').value = s.branch;
+    document.getElementById('ghToken').value = s.token;
+    connect();
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
