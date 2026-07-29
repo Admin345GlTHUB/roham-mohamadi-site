@@ -322,6 +322,44 @@ h2{
   .specimen-grid{grid-template-columns:1fr;}
 }
 
+/* ===== Biography Teaser ===== */
+.bio-teaser{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:3vw;
+  flex-wrap:wrap;
+  background:var(--panel);
+  border-radius:24px;
+  padding:5vw 5vw;
+}
+.bio-teaser-inner{max-width:520px;}
+.bio-teaser-inner h2{margin-bottom:0.9rem;}
+.bio-teaser-inner p{color:var(--gray); margin-bottom:1.6rem; max-width:44ch;}
+.bio-teaser-visual{
+  display:flex;
+  gap:0.9rem;
+}
+.mini-folder{
+  width:64px; height:80px;
+  border:1px solid var(--line);
+  border-top:10px solid var(--orange);
+  border-radius:4px;
+  background:var(--panel-2);
+  display:flex; align-items:flex-end; justify-content:center;
+  padding-bottom:0.6rem;
+  font-family:var(--mono);
+  font-size:0.65rem;
+  color:var(--gray);
+  transition:transform 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.mini-folder:nth-child(2){transform:translateY(10px) rotate(-2deg);}
+.mini-folder:nth-child(3){transform:translateY(-6px) rotate(2deg);}
+.bio-teaser:hover .mini-folder{border-top-color:var(--amber);}
+@media (max-width:720px){
+  .bio-teaser{flex-direction:column; align-items:flex-start;}
+}
+
 /* ===== Timeline ===== */
 .timeline{list-style:none;}
 .timeline-item{
