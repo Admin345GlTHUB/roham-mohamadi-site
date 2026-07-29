@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "eyebrow": "Tehran, Iran — NODET / SAMPAD, Biology Track",
+    "firstName": "Roham",
+    "lastName": "Mohamadi",
+    "subtitle": "A biology-track student who reads cells the way others read stories, writes a little code on the side, and is curious whether dentistry is where precision meets biology."
+  },
+  "about": {
+    "lead": "I'm Roham, a biology-track student in the NODET (SAMPAD) system in Tehran — a national program for students who lean hard into science early. Biology is where I spend most of my attention: how cells organize themselves, how genetics quietly writes the instructions for everything alive.",
+    "detail": "Outside of biology, I've been teaching myself programming, mostly because I like the same thing about code that I like about biology: small, precise rules producing something much bigger than themselves. I'm also increasingly interested in dentistry — a field that sits right at the intersection of biological knowledge and exact, hands-on craft. I'm based in Tehran for now, though I'm keeping an open mind about studying abroad down the line."
+  },
+  "interests": {
+    "card1": { "tag": "SPECIMEN A", "title": "Biology", "description": "Cell biology, genetics, and the logic living systems run on. My main field of study, and the lens I use for almost everything else." },
+    "card2": { "tag": "SPECIMEN B", "title": "Programming", "description": "Learning to build things with code — still early, but drawn to it for the same reason as biology: small rules, big results." },
+    "card3": { "tag": "SPECIMEN C", "title": "Dentistry", "description": "A growing interest — biological knowledge applied by hand, with precision and care. One of the paths I'm considering seriously." }
+  },
+  "timeline": {
+    "item1": { "title": "Now", "description": "Studying on the biology track at NODET (SAMPAD) in Tehran." },
+    "item2": { "title": "Alongside", "description": "Teaching myself the basics of programming, project by project." },
+    "item3": { "title": "Considering", "description": "Dentistry as a field where biology becomes something you do with your hands." },
+    "item4": { "title": "Ahead", "description": "Staying open to studying abroad as the next step, wherever it leads." }
+  },
+  "skills": {
+    "skill1": { "name": "Biology fundamentals", "level": 88 },
+    "skill2": { "name": "Genetics", "level": 75 },
+    "skill3": { "name": "Programming basics", "level": 55 },
+    "skill4": { "name": "Scientific curiosity", "level": 97 }
+  },
+  "contact": {
+    "description": "Open to conversations about biology, code, dentistry, or where those three overlap.",
+    "email": "your-email@example.com",
+    "linkedin": "#",
+    "github": "#",
+    "instagram": "#"
+  }
+}
