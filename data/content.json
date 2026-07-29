@@ -1,65 +1,101 @@
 {
   "hero": {
-    "eyebrow": "Tehran, Iran — NODET / SAMPAD, Biology Track",
+    "eyebrow": "Tehran, Iran — NODET , Biology Track",
     "firstName": "Roham",
     "lastName": "Mohamadi",
     "subtitle": "A biology-track student who reads cells the way others read stories, writes a little code on the side, and is curious whether dentistry is where precision meets biology."
   },
   "about": {
-    "lead": "I'm Roham, a biology-track student in the NODET (SAMPAD) system in Tehran — a national program for students who lean hard into science early. Biology is where I spend most of my attention: how cells organize themselves, how genetics quietly writes the instructions for everything alive.",
+    "lead": "I'm Roham, a biology-track student in Tehran — Biology is where I spend most of my attention: how cells organize themselves, how genetics quietly writes the instructions for everything alive.",
     "detail": "Outside of biology, I've been teaching myself programming, mostly because I like the same thing about code that I like about biology: small, precise rules producing something much bigger than themselves. I'm also increasingly interested in dentistry — a field that sits right at the intersection of biological knowledge and exact, hands-on craft. I'm based in Tehran for now, though I'm keeping an open mind about studying abroad down the line."
-  },
-  "interests": {
-    "card1": { "tag": "SPECIMEN A", "title": "Biology", "description": "Cell biology, genetics, and the logic living systems run on. My main field of study, and the lens I use for almost everything else." },
-    "card2": { "tag": "SPECIMEN B", "title": "Programming", "description": "Learning to build things with code — still early, but drawn to it for the same reason as biology: small rules, big results." },
-    "card3": { "tag": "SPECIMEN C", "title": "Dentistry", "description": "A growing interest — biological knowledge applied by hand, with precision and care. One of the paths I'm considering seriously." }
-  },
-  "timeline": {
-    "item1": { "title": "Now", "description": "Studying on the biology track at NODET (SAMPAD) in Tehran." },
-    "item2": { "title": "Alongside", "description": "Teaching myself the basics of programming, project by project." },
-    "item3": { "title": "Considering", "description": "Dentistry as a field where biology becomes something you do with your hands." },
-    "item4": { "title": "Ahead", "description": "Staying open to studying abroad as the next step, wherever it leads." }
-  },
-  "skills": {
-    "skill1": { "name": "Biology fundamentals", "level": 88 },
-    "skill2": { "name": "Genetics", "level": 75 },
-    "skill3": { "name": "Programming basics", "level": 55 },
-    "skill4": { "name": "Scientific curiosity", "level": 97 }
   },
   "biography": {
     "pageTitle": "The Roham Mohamadi Archive",
-    "pageIntro": "A longer, slower version of my story than the homepage has room for — organized like case files. Pick a folder.",
+    "pageIntro": "A longer, slower version of my story than the homepage has room for — organized like case files. Pick a folder. (Still writing...)",
     "topic1": {
-      "folderLabel": "001 — EARLY YEARS",
+      "folderLabel": "EARLY YEARS ",
       "title": "Where it started",
       "body": "I grew up in Tehran, and for as long as I can remember I've been the kind of kid who takes things apart to see how they work — not always successfully putting them back together. That habit turned out to be good training for biology: living things are also systems you take apart, piece by piece, to understand."
     },
     "topic2": {
-      "folderLabel": "002 — NODET / SAMPAD",
-      "title": "Joining the biology track",
+      "folderLabel": "SCHOOL",
+      "title": "Joining the study track",
       "body": "I'm a student in Iran's NODET (SAMPAD) system, on the biology track — a national program for students who want to go deep into science earlier than a normal curriculum allows. It's demanding, but it's the first place I was surrounded by people who cared about the same things I did."
     },
     "topic3": {
-      "folderLabel": "003 — BIOLOGY",
-      "title": "Falling for cells and genetics",
-      "body": "Biology is the subject I keep coming back to outside of class too. What hooked me is the logic of it — how a handful of molecular rules, repeated billions of times, produce something as complicated as a living organism. Genetics especially: the idea that an entire body is written down somewhere, in a code, still doesn't feel fully real to me."
+      "folderLabel": "",
+      "title": "",
+      "body": ""
     },
     "topic4": {
-      "folderLabel": "004 — CODE",
-      "title": "Teaching myself to program",
-      "body": "Programming came later, almost by accident, but it stuck for a similar reason as biology: small, precise rules that compound into something much bigger than themselves. I'm still early in this — mostly self-taught, mostly small projects — but it's become a real part of how I think."
+      "folderLabel": "",
+      "title": "",
+      "body": ""
     },
     "topic5": {
-      "folderLabel": "005 — WHAT'S NEXT",
-      "title": "Dentistry, and staying open",
-      "body": "Lately I've been seriously considering dentistry — a field where biological knowledge has to be applied by hand, precisely and carefully, which appeals to me in a different way than pure research does. I don't have it all figured out yet, and I'm keeping the door open to studying abroad if the right opportunity comes along."
+      "folderLabel": "",
+      "title": "",
+      "body": ""
+    }
+  },
+  "interests": {
+    "card1": {
+      "tag": "SPECIMEN A",
+      "title": "Biology",
+      "description": "Cell biology, genetics, and the logic living systems run on. My main field of study, and the lens I use for almost everything else."
+    },
+    "card2": {
+      "tag": "SPECIMEN B",
+      "title": "Programming",
+      "description": "Learning to build things with code — still early, but drawn to it for the same reason as biology: small rules, big results."
+    },
+    "card3": {
+      "tag": "SPECIMEN C",
+      "title": "Dentistry",
+      "description": "A growing interest — biological knowledge applied by hand, with precision and care. One of the paths I'm considering seriously."
+    }
+  },
+  "timeline": {
+    "item1": {
+      "title": "Now",
+      "description": "Studying on the biology track at NODET (SAMPAD) in Tehran."
+    },
+    "item2": {
+      "title": "Alongside",
+      "description": "Teaching myself the basics of programming, project by project."
+    },
+    "item3": {
+      "title": "Considering",
+      "description": "Dentistry as a field where biology becomes something you do with your hands."
+    },
+    "item4": {
+      "title": "Ahead",
+      "description": "Staying open to studying abroad as the next step, wherever it leads."
+    }
+  },
+  "skills": {
+    "skill1": {
+      "name": "Biology fundamentals",
+      "level": 88
+    },
+    "skill2": {
+      "name": "English ",
+      "level": 65
+    },
+    "skill3": {
+      "name": "Programming basics",
+      "level": 50
+    },
+    "skill4": {
+      "name": "Scientific curiosity",
+      "level": 100
     }
   },
   "contact": {
     "description": "Open to conversations about biology, code, dentistry, or where those three overlap.",
-    "email": "your-email@example.com",
-    "linkedin": "#",
-    "github": "#",
-    "instagram": "#"
+    "email": "roham.dente@gmail.com",
+    "linkedin": "None",
+    "github": "None",
+    "instagram": "https://www.instagram.com/roham_spec?igsh=MWl1bjZtM2c2b2UyMQ=="
   }
 }
