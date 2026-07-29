@@ -135,6 +135,15 @@
   </div>
 
   <div class="card">
+    <h2>Biography Archive Page</h2>
+    <label>Page title</label>
+    <input type="text" id="f_biography_pageTitle">
+    <label>Page intro</label>
+    <textarea id="f_biography_pageIntro"></textarea>
+    <div id="biographyFields"></div>
+  </div>
+
+  <div class="card">
     <h2>Interests — 3 cards</h2>
     <div id="interestsFields"></div>
   </div>
@@ -188,6 +197,10 @@ function buildRepeatingFields(containerId, keys, fields){
   }).join('');
 }
 
+buildRepeatingFields('biographyFields',
+  [{id:'topic1',label:'Folder 1'},{id:'topic2',label:'Folder 2'},{id:'topic3',label:'Folder 3'},{id:'topic4',label:'Folder 4'},{id:'topic5',label:'Folder 5'}],
+  [{name:'folderLabel',label:'Folder label (e.g. 001 — EARLY YEARS)'},{name:'title',label:'Title'},{name:'body',label:'Body text',type:'textarea'}]
+);
 buildRepeatingFields('interestsFields',
   [{id:'card1',label:'Card 1'},{id:'card2',label:'Card 2'},{id:'card3',label:'Card 3'}],
   [{name:'tag',label:'Tag label'},{name:'title',label:'Title'},{name:'description',label:'Description',type:'textarea'}]
@@ -256,6 +269,13 @@ function fillForm(data){
   set('f_hero_subtitle', data.hero?.subtitle);
   set('f_about_lead', data.about?.lead);
   set('f_about_detail', data.about?.detail);
+  set('f_biography_pageTitle', data.biography?.pageTitle);
+  set('f_biography_pageIntro', data.biography?.pageIntro);
+  ['topic1','topic2','topic3','topic4','topic5'].forEach(k => {
+    set(`f_${k}_folderLabel`, data.biography?.[k]?.folderLabel);
+    set(`f_${k}_title`, data.biography?.[k]?.title);
+    set(`f_${k}_body`, data.biography?.[k]?.body);
+  });
   ['card1','card2','card3'].forEach(k => {
     set(`f_${k}_tag`, data.interests?.[k]?.tag);
     set(`f_${k}_title`, data.interests?.[k]?.title);
@@ -284,6 +304,10 @@ function collectForm(){
       lastName: get('f_hero_lastName'), subtitle: get('f_hero_subtitle')
     },
     about: { lead: get('f_about_lead'), detail: get('f_about_detail') },
+    biography: {
+      pageTitle: get('f_biography_pageTitle'),
+      pageIntro: get('f_biography_pageIntro')
+    },
     interests: {}, timeline: {}, skills: {},
     contact: {
       description: get('f_contact_description'), email: get('f_contact_email'),
@@ -293,6 +317,9 @@ function collectForm(){
   };
   ['card1','card2','card3'].forEach(k => {
     obj.interests[k] = { tag: get(`f_${k}_tag`), title: get(`f_${k}_title`), description: get(`f_${k}_description`) };
+  });
+  ['topic1','topic2','topic3','topic4','topic5'].forEach(k => {
+    obj.biography[k] = { folderLabel: get(`f_${k}_folderLabel`), title: get(`f_${k}_title`), body: get(`f_${k}_body`) };
   });
   ['item1','item2','item3','item4'].forEach(k => {
     obj.timeline[k] = { title: get(`f_${k}_title`), description: get(`f_${k}_description`) };
