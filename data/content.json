@@ -10,27 +10,63 @@
     "detail": "Outside of biology, I've been teaching myself programming, mostly because I like the same thing about code that I like about biology: small, precise rules producing something much bigger than themselves. I'm also increasingly interested in dentistry — a field that sits right at the intersection of biological knowledge and exact, hands-on craft. I'm based in Tehran for now, though I'm keeping an open mind about studying abroad down the line."
   },
   "interests": {
-    "card1": { "tag": "SPECIMEN A", "title": "Biology", "description": "Cell biology, genetics, and the logic living systems run on. My main field of study, and the lens I use for almost everything else." },
-    "card2": { "tag": "SPECIMEN B", "title": "Programming", "description": "Learning to build things with code — still early, but drawn to it for the same reason as biology: small rules, big results." },
-    "card3": { "tag": "SPECIMEN C", "title": "Dentistry", "description": "A growing interest — biological knowledge applied by hand, with precision and care. One of the paths I'm considering seriously." }
+    "card1": {
+      "tag": "A",
+      "title": "Biology",
+      "description": "Cell biology, genetics, and the logic living systems run on. My main field of study, and the lens I use for almost everything else."
+    },
+    "card2": {
+      "tag": " B",
+      "title": "Programming",
+      "description": "Learning to build things with code — still early, but drawn to it for the same reason as biology: small rules, big results."
+    },
+    "card3": {
+      "tag": " C",
+      "title": "Dentistry",
+      "description": "A growing interest — biological knowledge applied by hand, with precision and care. One of the paths I'm considering seriously. May be my future job ?"
+    }
   },
   "timeline": {
-    "item1": { "title": "Now", "description": "Studying on the biology track at NODET (SAMPAD) in Tehran." },
-    "item2": { "title": "Alongside", "description": "Teaching myself the basics of programming, project by project." },
-    "item3": { "title": "Considering", "description": "Dentistry as a field where biology becomes something you do with your hands." },
-    "item4": { "title": "Ahead", "description": "Staying open to studying abroad as the next step, wherever it leads." }
+    "item1": {
+      "title": "Now",
+      "description": "Studying on the biology track at school in Tehran."
+    },
+    "item2": {
+      "title": "Alongside",
+      "description": "Teaching myself the basics of programming, project by project."
+    },
+    "item3": {
+      "title": "Considering",
+      "description": "Dentistry as a field where biology becomes something you do with your hands."
+    },
+    "item4": {
+      "title": "Ahead",
+      "description": "Staying open to studying abroad as the next step, wherever it leads."
+    }
   },
   "skills": {
-    "skill1": { "name": "Biology fundamentals", "level": 88 },
-    "skill2": { "name": "Genetics", "level": 75 },
-    "skill3": { "name": "Programming basics", "level": 55 },
-    "skill4": { "name": "Scientific curiosity", "level": 97 }
+    "skill1": {
+      "name": "Biology ",
+      "level": 80
+    },
+    "skill2": {
+      "name": "English ",
+      "level": 70
+    },
+    "skill3": {
+      "name": "Programming basics",
+      "level": 55
+    },
+    "skill4": {
+      "name": "Scientific curiosity",
+      "level": 100
+    }
   },
   "contact": {
     "description": "Open to conversations about biology, code, dentistry, or where those three overlap.",
-    "email": "your-email@example.com",
-    "linkedin": "#",
-    "github": "#",
-    "instagram": "#"
+    "email": "roham.dente@gmail.com",
+    "linkedin": "",
+    "github": "",
+    "instagram": ""
   }
 }
