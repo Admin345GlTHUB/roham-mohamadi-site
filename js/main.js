@@ -68,6 +68,66 @@
     .catch(() => { /* fall back silently to the default text already in the HTML */ });
 })();
 
+// ===== Mobile hamburger menu =====
+(function mobileMenu(){
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  function close(){
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', () => {
+    const isOpen = btn.classList.toggle('open');
+    menu.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+})();
+
+// ===== Specimen card tilt (follows cursor) =====
+(function cardTilt(){
+  const cards = document.querySelectorAll('.specimen-card');
+  if (!cards.length || window.matchMedia('(pointer: coarse)').matches) return;
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.setProperty('--rx', `${x * 14}deg`);
+      card.style.setProperty('--ry', `${-y * 14}deg`);
+      card.style.transform = `perspective(800px) rotateX(${-y * 14}deg) rotateY(${x * 14}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
+    });
+  });
+})();
+
+// ===== Ambient cursor glow =====
+(function cursorGlow(){
+  const glow = document.getElementById('cursorGlow');
+  if (!glow || window.matchMedia('(pointer: coarse)').matches) return;
+  let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2;
+  let curX = targetX, curY = targetY;
+  let active = false;
+
+  window.addEventListener('mousemove', (e) => {
+    targetX = e.clientX; targetY = e.clientY;
+    if (!active){ active = true; glow.classList.add('active'); }
+  }, { passive: true });
+  window.addEventListener('mouseleave', () => glow.classList.remove('active'));
+
+  function tick(){
+    curX += (targetX - curX) * 0.12;
+    curY += (targetY - curY) * 0.12;
+    glow.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
 // ===== Footer year =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -203,7 +263,8 @@ skillBars.forEach(el => skillObserver.observe(el));
       y: Math.random() * h,
       vx: (Math.random() - 0.5) * 0.25,
       vy: (Math.random() - 0.5) * 0.25,
-      r: Math.random() * 1.6 + 0.6
+      r: Math.random() * 1.6 + 0.6,
+      violet: Math.random() < 0.35
     }));
   }
   window.addEventListener('resize', resize);
@@ -234,7 +295,7 @@ skillBars.forEach(el => skillObserver.observe(el));
     for (const n of nodes){
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,179,71,0.4)';
+      ctx.fillStyle = n.violet ? 'rgba(155,107,255,0.45)' : 'rgba(255,179,71,0.4)';
       ctx.fill();
     }
     if (!prefersReduced) requestAnimationFrame(tick);
