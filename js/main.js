@@ -105,58 +105,6 @@ const skillObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 skillBars.forEach(el => skillObserver.observe(el));
 
-// ===== Signature: drawn live like a real pen stroke =====
-(function drawSignature(){
-  const path = document.getElementById('signaturePath');
-  const tip = document.getElementById('signatureTip');
-  const caption = document.querySelector('.signature-caption');
-  const block = document.querySelector('.signature-block');
-  if (!path || !block) return;
-
-  const len = path.getTotalLength();
-  path.style.strokeDasharray = len;
-  path.style.strokeDashoffset = len;
-
-  const DURATION = 2600; // ms, matches the CSS transition below
-  let played = false;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !played){
-        played = true;
-
-        path.style.transition = `stroke-dashoffset ${DURATION}ms cubic-bezier(.65,0,.35,1)`;
-        requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; });
-
-        if (tip){
-          tip.style.opacity = '1';
-          const start = performance.now();
-          function moveTip(now){
-            const elapsed = now - start;
-            const t = Math.min(elapsed / DURATION, 1);
-            const point = path.getPointAtLength(t * len);
-            tip.setAttribute('cx', point.x);
-            tip.setAttribute('cy', point.y);
-            if (t < 1){
-              requestAnimationFrame(moveTip);
-            } else {
-              tip.style.transition = 'opacity 0.5s ease';
-              tip.style.opacity = '0';
-            }
-          }
-          requestAnimationFrame(moveTip);
-        }
-
-        setTimeout(() => {
-          if (caption) caption.classList.add('show');
-        }, DURATION + 150);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  observer.observe(block);
-})();
-
 // ===== Hero signature: helix that resolves into a molar =====
 (function drawSpecimen(){
   const helixGroup = document.getElementById('helixGroup');
