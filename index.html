@@ -57,6 +57,11 @@
 <body>
 
 <canvas id="bg-canvas"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+<svg class="grain-overlay" xmlns="http://www.w3.org/2000/svg">
+  <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+</svg>
 
 <div class="progress-bar" id="progressBar"></div>
 
@@ -70,7 +75,19 @@
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="biography.html">Story</a>
+  <a href="#interests">Interests</a>
+  <a href="#path">Path</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</div>
 
 <main>
 
@@ -96,7 +113,7 @@
       <svg id="specimenSvg" viewBox="0 0 400 520" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- helix that resolves into a molar shape, drawn on scroll -->
         <g id="helixGroup" stroke="#ff6b35" stroke-width="2.4" stroke-linecap="round" fill="none"></g>
-        <g id="rungGroup" stroke="#ffb347" stroke-width="1.6" stroke-linecap="round" opacity="0.75"></g>
+        <g id="rungGroup" stroke="#9b6bff" stroke-width="1.6" stroke-linecap="round" opacity="0.75"></g>
         <path id="molarPath" d="M130 430 C120 470, 140 500, 165 495 C180 492, 178 465, 190 465 C202 465, 200 494, 218 496 C244 499, 262 468, 250 428 C244 408, 224 398, 200 400 C176 398, 138 408, 130 430 Z"
           stroke="#f5f0e8" stroke-width="2.2" fill="none" opacity="0"/>
       </svg>
@@ -215,20 +232,20 @@
       <span class="eyebrow">04 &mdash; Skills</span>
       <h2>What I bring to the bench</h2>
     </div>
-    <div class="skills-grid reveal">
-      <div class="skill-row">
+    <div class="skills-grid">
+      <div class="skill-row reveal">
         <span class="skill-name" id="skill1-name">Biology fundamentals</span>
         <div class="skill-bar" id="skill1-bar"><span style="--level:88%"></span></div>
       </div>
-      <div class="skill-row">
+      <div class="skill-row reveal">
         <span class="skill-name" id="skill2-name">Genetics</span>
         <div class="skill-bar" id="skill2-bar"><span style="--level:75%"></span></div>
       </div>
-      <div class="skill-row">
+      <div class="skill-row reveal">
         <span class="skill-name" id="skill3-name">Programming basics</span>
         <div class="skill-bar" id="skill3-bar"><span style="--level:55%"></span></div>
       </div>
-      <div class="skill-row">
+      <div class="skill-row reveal">
         <span class="skill-name" id="skill4-name">Scientific curiosity</span>
         <div class="skill-bar" id="skill4-bar"><span style="--level:97%"></span></div>
       </div>
