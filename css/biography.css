@@ -58,6 +58,10 @@
   border-left-color:var(--orange);
   color:var(--orange);
 }
+.folder-tab:nth-child(even).active{
+  border-left-color:var(--violet-soft);
+  color:var(--violet-soft);
+}
 
 /* Folder content */
 .folder-content{
