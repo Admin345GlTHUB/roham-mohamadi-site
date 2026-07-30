@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rohammohamadi.com/sitemap.xml
+Sitemap: https://roham615.github.io/roham-mohamadi-site/sitemap.xml
