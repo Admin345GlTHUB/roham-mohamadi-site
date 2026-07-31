@@ -68,6 +68,51 @@
     .catch(() => { /* fall back silently to the default text already in the HTML */ });
 })();
 
+// ===== Settings panel: theme + reduced motion + edit/source links =====
+(function settingsPanel(){
+  const btn = document.getElementById('settingsBtn');
+  const panel = document.getElementById('settingsPanel');
+  if (!btn || !panel) return;
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.addEventListener('click', (e) => {
+    if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== btn){
+      panel.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  const themeOpts = panel.querySelectorAll('.theme-opt');
+  const currentTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  themeOpts.forEach(opt => opt.classList.toggle('active', opt.dataset.themeChoice === currentTheme));
+  themeOpts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const choice = opt.dataset.themeChoice;
+      if (choice === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      else document.documentElement.removeAttribute('data-theme');
+      try{ localStorage.setItem('rm-theme', choice); }catch(e){}
+      themeOpts.forEach(o => o.classList.toggle('active', o === opt));
+    });
+  });
+
+  const motionSwitch = document.getElementById('motionSwitch');
+  if (motionSwitch){
+    const currentlyReduced = document.documentElement.getAttribute('data-motion') === 'reduced';
+    motionSwitch.setAttribute('aria-checked', String(currentlyReduced));
+    motionSwitch.addEventListener('click', () => {
+      const next = motionSwitch.getAttribute('aria-checked') !== 'true';
+      motionSwitch.setAttribute('aria-checked', String(next));
+      if (next) document.documentElement.setAttribute('data-motion', 'reduced');
+      else document.documentElement.removeAttribute('data-motion');
+      try{ localStorage.setItem('rm-motion', next ? 'reduced' : 'normal'); }catch(e){}
+    });
+  }
+})();
+
 // ===== Mobile hamburger menu =====
 (function mobileMenu(){
   const btn = document.getElementById('hamburger');
@@ -298,7 +343,7 @@ skillBars.forEach(el => skillObserver.observe(el));
       ctx.fillStyle = n.violet ? 'rgba(155,107,255,0.45)' : 'rgba(255,179,71,0.4)';
       ctx.fill();
     }
-    if (!prefersReduced) requestAnimationFrame(tick);
+    if (!prefersReduced && document.documentElement.dataset.motion !== 'reduced') requestAnimationFrame(tick);
   }
   tick();
 })();
