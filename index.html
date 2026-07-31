@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+(function(){
+  try{
+    if (localStorage.getItem('rm-theme') === 'light') document.documentElement.setAttribute('data-theme','light');
+    if (localStorage.getItem('rm-motion') === 'reduced') document.documentElement.setAttribute('data-motion','reduced');
+  }catch(e){}
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roham Mohamadi — Biology Student &amp; Curious Mind, Tehran</title>
 <meta name="description" content="Roham Mohamadi is a NODET (SAMPAD) biology-track high school student in Tehran, exploring genetics, dentistry, and code. Official personal site.">
@@ -67,18 +75,37 @@
 
 <header class="nav" id="nav">
   <a href="#top" class="nav-mark">RM</a>
-  <nav class="nav-links">
-    <a href="#about">About</a>
-    <a href="biography.html">Story</a>
-    <a href="#interests">Interests</a>
-    <a href="#path">Path</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="biography.html">Story</a>
+      <a href="#interests">Interests</a>
+      <a href="#path">Path</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="settings-btn" id="settingsBtn" aria-label="Site settings" aria-expanded="false">&#8942;</button>
+  </div>
 </header>
+
+<div class="settings-panel" id="settingsPanel">
+  <div class="settings-row">
+    <span>Theme</span>
+    <div class="theme-toggle" role="group" aria-label="Theme">
+      <button type="button" class="theme-opt active" data-theme-choice="dark">Dark</button>
+      <button type="button" class="theme-opt" data-theme-choice="light">Light</button>
+    </div>
+  </div>
+  <div class="settings-row">
+    <span>Reduce motion</span>
+    <button type="button" class="switch" id="motionSwitch" role="switch" aria-checked="false"><span></span></button>
+  </div>
+  <a href="admin/" class="settings-link">Edit content</a>
+  <a href="https://github.com/roham615/roham-mohamadi-site" target="_blank" rel="noopener" class="settings-link">View source on GitHub</a>
+</div>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about">About</a>
