@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+(function(){
+  try{
+    if (localStorage.getItem('rm-theme') === 'light') document.documentElement.setAttribute('data-theme','light');
+    if (localStorage.getItem('rm-motion') === 'reduced') document.documentElement.setAttribute('data-motion','reduced');
+  }catch(e){}
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Archive — Roham Mohamadi</title>
 <meta name="description" content="The longer story of Roham Mohamadi — a biology-track NODET (SAMPAD) student in Tehran — told across five case files.">
@@ -27,15 +35,34 @@
 
 <header class="nav" id="nav">
   <a href="index.html" class="nav-mark">RM</a>
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#contact">Contact</a>
-  </nav>
-  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="settings-btn" id="settingsBtn" aria-label="Site settings" aria-expanded="false">&#8942;</button>
+  </div>
 </header>
+
+<div class="settings-panel" id="settingsPanel">
+  <div class="settings-row">
+    <span>Theme</span>
+    <div class="theme-toggle" role="group" aria-label="Theme">
+      <button type="button" class="theme-opt active" data-theme-choice="dark">Dark</button>
+      <button type="button" class="theme-opt" data-theme-choice="light">Light</button>
+    </div>
+  </div>
+  <div class="settings-row">
+    <span>Reduce motion</span>
+    <button type="button" class="switch" id="motionSwitch" role="switch" aria-checked="false"><span></span></button>
+  </div>
+  <a href="admin/" class="settings-link">Edit content</a>
+  <a href="https://github.com/roham615/roham-mohamadi-site" target="_blank" rel="noopener" class="settings-link">View source on GitHub</a>
+</div>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
