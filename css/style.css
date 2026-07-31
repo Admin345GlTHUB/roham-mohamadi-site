@@ -18,6 +18,19 @@
   --ease:cubic-bezier(.22,1,.36,1);
 }
 
+[data-theme="light"]{
+  --void:#faf7f2;
+  --panel:#ffffff;
+  --panel-2:#f1ece3;
+  --bone:#1a1a1f;
+  --gray:#68676f;
+  --line:rgba(10,10,13,0.1);
+}
+[data-theme="light"] body{background:var(--void);}
+[data-theme="light"] .nav{background:linear-gradient(to bottom, rgba(250,247,242,0.9), transparent);}
+[data-theme="light"] .switch{background:var(--panel-2);}
+[data-theme="light"] .theme-toggle{background:var(--panel-2);}
+
 *{margin:0;padding:0;box-sizing:border-box;}
 
 html{scroll-behavior:smooth;}
@@ -26,6 +39,8 @@ html{scroll-behavior:smooth;}
   html{scroll-behavior:auto;}
   *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
 }
+html[data-motion="reduced"]{scroll-behavior:auto;}
+html[data-motion="reduced"] *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
 
 body{
   background:var(--void);
@@ -86,6 +101,7 @@ a{color:inherit; text-decoration:none;}
   transition:border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 .nav-mark:hover{border-color:var(--orange); color:var(--orange); transform:rotate(-8deg);}
+.nav-right{display:flex; align-items:center; gap:1.4rem;}
 .nav-links{display:flex; gap:2.2rem;}
 .nav-links a{
   font-family:var(--mono);
@@ -168,6 +184,109 @@ a{color:inherit; text-decoration:none;}
   .mobile-menu{display:none;}
 }
 
+/* ===== Settings button + panel ===== */
+.settings-btn{
+  background:none;
+  border:1px solid var(--line);
+  color:var(--bone);
+  width:36px; height:36px;
+  border-radius:50%;
+  font-size:1.1rem;
+  line-height:1;
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.settings-btn:hover{border-color:var(--orange); color:var(--orange); transform:rotate(90deg);}
+
+.settings-panel{
+  position:fixed;
+  top:70px; right:6vw;
+  z-index:55;
+  width:260px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:1.1rem;
+  box-shadow:0 20px 50px -12px rgba(0,0,0,0.5);
+  opacity:0;
+  transform:translateY(-8px) scale(0.98);
+  pointer-events:none;
+  transition:opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.settings-panel.open{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.settings-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0.5rem 0;
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:var(--bone);
+}
+.theme-toggle{
+  display:flex;
+  background:var(--void);
+  border-radius:999px;
+  padding:2px;
+  gap:2px;
+}
+.theme-opt{
+  background:none;
+  border:none;
+  color:var(--gray);
+  font-family:var(--mono);
+  font-size:0.68rem;
+  text-transform:uppercase;
+  padding:0.35rem 0.7rem;
+  border-radius:999px;
+  cursor:pointer;
+  transition:background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.theme-opt.active{background:var(--orange); color:var(--void);}
+
+.switch{
+  width:38px; height:22px;
+  background:var(--void);
+  border:1px solid var(--line);
+  border-radius:999px;
+  position:relative;
+  cursor:pointer;
+  padding:0;
+}
+.switch span{
+  position:absolute;
+  top:2px; left:2px;
+  width:16px; height:16px;
+  border-radius:50%;
+  background:var(--gray);
+  transition:transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+.switch[aria-checked="true"] span{
+  transform:translateX(16px);
+  background:var(--orange);
+}
+
+.settings-link{
+  display:block;
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:var(--gray);
+  padding:0.7rem 0;
+  border-top:1px solid var(--line);
+  margin-top:0.4rem;
+  transition:color 0.3s var(--ease);
+}
+.settings-link:hover{color:var(--orange);}
+
+@media (max-width:480px){
+  .settings-panel{right:4vw; width:calc(100vw - 8vw);}
+}
+
 /* ===== Layout helpers ===== */
 main{position:relative; z-index:1;}
 section{
@@ -217,6 +336,13 @@ h2{
 .skill-row:nth-child(2){transition-delay:0.1s;}
 .skill-row:nth-child(3){transition-delay:0.2s;}
 .skill-row:nth-child(4){transition-delay:0.3s;}
+/* Reset the stagger delay once the entrance animation has played, so it
+   doesn't keep delaying unrelated transitions (like card tilt on hover) */
+.specimen-card.is-visible,
+.timeline-item.is-visible,
+.skill-row.is-visible{
+  transition-delay:0s;
+}
 
 /* ===== Hero ===== */
 .hero{
@@ -372,9 +498,9 @@ h2{
   opacity:0;
   transition:opacity 0.4s var(--ease);
 }
-.specimen-card:nth-child(1){ --card-accent: rgba(255,107,53,0.16); }
-.specimen-card:nth-child(2){ --card-accent: rgba(155,107,255,0.18); }
-.specimen-card:nth-child(3){ --card-accent: rgba(255,179,71,0.16); }
+.specimen-card:nth-child(1){ --card-accent: rgba(255,107,53,0.18); }
+.specimen-card:nth-child(2){ --card-accent: rgba(155,107,255,0.22); }
+.specimen-card:nth-child(3){ --card-accent: rgba(255,179,71,0.2); }
 .specimen-card:nth-child(1) .specimen-tag{ color:var(--orange); }
 .specimen-card:nth-child(2) .specimen-tag{ color:var(--violet-soft); }
 .specimen-card:nth-child(3) .specimen-tag{ color:var(--amber); }
@@ -563,6 +689,7 @@ h2{
 @media (prefers-reduced-motion: reduce){
   .cursor-glow{display:none;}
 }
+html[data-motion="reduced"] .cursor-glow{display:none;}
 
 /* ===== Grain texture overlay ===== */
 .grain-overlay{
