@@ -6,7 +6,7 @@
     "subtitle": "A biology-track student who reads cells the way others read stories, writes a little code on the side, and is curious whether dentistry is where precision meets biology."
   },
   "about": {
-    "lead": "I'm Roham, a biology-track student in Tehran — a national program for students who lean hard into science early. Biology is where I spend most of my attention: how cells organize themselves, how genetics quietly writes the instructions for everything alive.",
+    "lead": "I'm Roham, a biology-track student in Tehran — \nBiology is where I spend most of my attention: how cells organize themselves, how genetics quietly writes the instructions for everything alive.",
     "detail": "Outside of biology, I've been teaching myself programming, mostly because I like the same thing about code that I like about biology: small, precise rules producing something much bigger than themselves. I'm also increasingly interested in dentistry — a field that sits right at the intersection of biological knowledge and exact, hands-on craft. I'm based in Tehran for now, though I'm keeping an open mind about studying abroad down the line."
   },
   "biography": {
@@ -18,7 +18,7 @@
       "body": "I grew up in Tehran, and for as long as I can remember I've been the kind of kid who takes things apart to see how they work — not always successfully putting them back together. That habit turned out to be good training for biology: living things are also systems you take apart, piece by piece, to understand."
     },
     "topic2": {
-      "folderLabel": "002 — NODET / SAMPAD",
+      "folderLabel": "002 — SCHOOL",
       "title": "Joining the biology track",
       "body": "I'm a student in Iran's (SAMPAD) system, on the biology track — a national program for students who want to go deep into science earlier than a normal curriculum allows. It's demanding, but it's the first place I was surrounded by people who cared about the same things I did."
     },
