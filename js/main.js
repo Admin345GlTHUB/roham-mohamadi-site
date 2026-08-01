@@ -210,85 +210,68 @@ const skillObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 skillBars.forEach(el => skillObserver.observe(el));
 
-// ===== Hero signature: helix that resolves into a molar =====
+// ===== Hero visual: vitals -> code -> molar, looping =====
 (function drawSpecimen(){
-  const helixGroup = document.getElementById('helixGroup');
-  const rungGroup = document.getElementById('rungGroup');
+  const ekgPath = document.getElementById('ekgPath');
+  const codePath = document.getElementById('codePath');
   const molarPath = document.getElementById('molarPath');
-  if (!helixGroup) return;
+  const caption = document.getElementById('visualCaption');
+  if (!ekgPath || !codePath || !molarPath) return;
 
-  const width = 400, topY = 20, bottomY = 400, turns = 4, amplitude = 55, centerX = 200, steps = 140;
+  const stages = [
+    { path: ekgPath, label: 'vitals', duration: 1500 },
+    { path: codePath, label: 'code', duration: 1600 },
+    { path: molarPath, label: 'molar', duration: 1400 }
+  ];
 
-  function xFor(t, phase){
-    return centerX + amplitude * Math.sin((t * turns * Math.PI * 2) + phase);
-  }
-
-  let strandA = 'M ';
-  let strandB = 'M ';
-  for (let i = 0; i <= steps; i++){
-    const t = i / steps;
-    const y = topY + t * (bottomY - topY);
-    const xa = xFor(t, 0);
-    const xb = xFor(t, Math.PI);
-    strandA += `${xa.toFixed(1)} ${y.toFixed(1)} `;
-    strandB += `${xb.toFixed(1)} ${y.toFixed(1)} `;
-    if (i < steps){ strandA += 'L '; strandB += 'L '; }
-  }
-
-  const pathA = document.createElementNS('http://www.w3.org/2000/svg','path');
-  pathA.setAttribute('d', strandA);
-  const pathB = document.createElementNS('http://www.w3.org/2000/svg','path');
-  pathB.setAttribute('d', strandB);
-  helixGroup.appendChild(pathA);
-  helixGroup.appendChild(pathB);
-
-  [pathA, pathB].forEach(p => {
-    const len = p.getTotalLength();
-    p.style.strokeDasharray = len;
-    p.style.strokeDashoffset = len;
+  stages.forEach(s => {
+    const len = s.path.getTotalLength();
+    s.path.style.strokeDasharray = len;
+    s.path.style.strokeDashoffset = len;
   });
 
-  // rungs
-  const rungCount = 16;
-  for (let i = 0; i <= rungCount; i++){
-    const t = i / rungCount;
-    const y = topY + t * (bottomY - topY);
-    const xa = xFor(t, 0);
-    const xb = xFor(t, Math.PI);
-    const rung = document.createElementNS('http://www.w3.org/2000/svg','line');
-    rung.setAttribute('x1', xa); rung.setAttribute('y1', y);
-    rung.setAttribute('x2', xb); rung.setAttribute('y2', y);
-    rung.style.opacity = 0;
-    rungGroup.appendChild(rung);
+  const HOLD = 1100;   // how long a finished stage stays fully visible
+  const FADE = 450;    // crossfade duration between stages
+  let index = 0;
+  let timer = null;
+
+  function playStage(i){
+    const stage = stages[i];
+    const path = stage.path;
+
+    // Reset and draw this stage
+    const len = path.getTotalLength();
+    path.style.transition = 'none';
+    path.style.opacity = '1';
+    path.style.strokeDashoffset = len;
+    // Force reflow so the reset above takes effect before animating
+    void path.getBoundingClientRect();
+    path.style.transition = `stroke-dashoffset ${stage.duration}ms cubic-bezier(.65,0,.35,1)`;
+    requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; });
+
+    if (caption) caption.textContent = `vitals \u2192 code \u2192 molar \u2014 now: ${stage.label}`;
+
+    timer = setTimeout(() => {
+      // fade this stage out
+      path.style.transition = `opacity ${FADE}ms ease`;
+      path.style.opacity = '0';
+      const next = (i + 1) % stages.length;
+      timer = setTimeout(() => playStage(next), FADE);
+    }, stage.duration + HOLD);
   }
 
-  let played = false;
+  let started = false;
   const heroVisual = document.querySelector('.hero-visual');
   const specimenObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && !played){
-        played = true;
-        [pathA, pathB].forEach((p, idx) => {
-          p.style.transition = `stroke-dashoffset 2.1s cubic-bezier(.22,1,.36,1) ${idx * 0.15}s`;
-          requestAnimationFrame(() => { p.style.strokeDashoffset = '0'; });
-        });
-        Array.from(rungGroup.children).forEach((rung, i) => {
-          setTimeout(() => {
-            rung.style.transition = 'opacity 0.5s ease';
-            rung.style.opacity = 0.75;
-          }, 300 + i * 70);
-        });
-        const molarLen = molarPath.getTotalLength();
-        molarPath.style.strokeDasharray = molarLen;
-        molarPath.style.strokeDashoffset = molarLen;
-        setTimeout(() => {
-          molarPath.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(.22,1,.36,1), opacity 0.3s ease';
-          molarPath.style.opacity = 1;
-          molarPath.style.strokeDashoffset = '0';
-        }, 1900);
+      if (entry.isIntersecting && !started){
+        started = true;
+        playStage(0);
+        specimenObserver.disconnect();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.25 });
+
   if (heroVisual) specimenObserver.observe(heroVisual);
 })();
 
