@@ -12,7 +12,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roham Mohamadi — Biology Student &amp; Curious Mind, Tehran</title>
-<meta name="description" content="Roham Mohamadi is a high school student in Tehran, exploring genetics, dentistry, and code. Official personal site.">
+<meta name="description" content="Roham Mohamadi is a NODET (SAMPAD) biology-track high school student in Tehran, exploring genetics, dentistry, and code. Official personal site.">
 <meta name="keywords" content="Roham Mohamadi, Roham Mohamadi Tehran, Roham Mohamadi biology, Roham Mohamadi student">
 <meta name="author" content="Roham Mohamadi">
 <meta name="robots" content="index, follow">
@@ -21,7 +21,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Roham Mohamadi — Biology Student & Curious Mind">
-<meta property="og:description" content="Personal site of Roham Mohamadi: student in Tehran, exploring genetics, dentistry, and programming.">
+<meta property="og:description" content="Personal site of Roham Mohamadi: NODET (SAMPAD) biology-track student in Tehran, exploring genetics, dentistry, and programming.">
 <meta property="og:url" content="https://roham615.github.io/roham-mohamadi-site/">
 <meta property="og:site_name" content="Roham Mohamadi">
 <meta property="profile:first_name" content="Roham">
@@ -30,7 +30,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Roham Mohamadi — Biology Student & Curious Mind">
-<meta name="twitter:description" content=" biology-track student in Tehran, exploring genetics, dentistry, and programming.">
+<meta name="twitter:description" content="NODET (SAMPAD) biology-track student in Tehran, exploring genetics, dentistry, and programming.">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%230a0a0d%22/><text x=%2250%22 y=%2266%22 font-size=%2260%22 fill=%22%23ff6b35%22 text-anchor=%22middle%22 font-family=%22Georgia%22>R</text></svg>">
 
@@ -58,7 +58,7 @@
     "addressCountry": "IR"
   },
   "knowsAbout": ["Biology", "Genetics", "Dentistry", "Programming", "Computer Science"],
-  "description": "Roham Mohamadi is a biology-track student in Tehran, interested in genetics, dentistry, and programming."
+  "description": "Roham Mohamadi is a biology-track student at NODET (SAMPAD) in Tehran, interested in genetics, dentistry, and programming."
 }
 </script>
 </head>
@@ -137,14 +137,27 @@
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <svg id="specimenSvg" viewBox="0 0 400 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- helix that resolves into a molar shape, drawn on scroll -->
-        <g id="helixGroup" stroke="#ff6b35" stroke-width="2.4" stroke-linecap="round" fill="none"></g>
-        <g id="rungGroup" stroke="#9b6bff" stroke-width="1.6" stroke-linecap="round" opacity="0.75"></g>
-        <path id="molarPath" d="M130 430 C120 470, 140 500, 165 495 C180 492, 178 465, 190 465 C202 465, 200 494, 218 496 C244 499, 262 468, 250 428 C244 408, 224 398, 200 400 C176 398, 138 408, 130 430 Z"
-          stroke="#f5f0e8" stroke-width="2.2" fill="none" opacity="0"/>
+      <svg id="specimenSvg" viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stage 1: heartbeat / EKG waveform -->
+        <path id="ekgPath"
+          d="M20 170 L70 170 L85 160 L100 180 L115 60 L130 260 L150 170 L180 170
+             L195 150 L210 190 L225 170 L260 170 L275 160 L290 180 L305 60 L320 260 L340 170 L380 170"
+          stroke="#ff6b35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Stage 2: code brackets -->
+        <path id="codePath"
+          d="M170 90 C150 90 145 105 145 125 C145 145 130 155 115 160 C130 165 145 175 145 195 C145 215 150 230 170 230
+             M230 90 C250 90 255 105 255 125 C255 145 270 155 285 160 C270 165 255 175 255 195 C255 215 250 230 230 230
+             M175 130 L215 130
+             M175 155 L205 155
+             M175 180 L225 180"
+          stroke="#b794ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0"/>
+        <!-- Stage 3: molar -->
+        <path id="molarPath"
+          d="M130 210 C120 250, 140 280, 165 275 C180 272, 178 245, 190 245 C202 245, 200 274, 218 276
+             C244 279, 262 248, 250 208 C244 188, 224 178, 200 180 C176 178, 138 188, 130 210 Z"
+          stroke="#ffb347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0"/>
       </svg>
-      <span class="visual-caption">helix &rarr; molar, drawn in one line</span>
+      <span class="visual-caption" id="visualCaption">vitals &rarr; code &rarr; molar</span>
     </div>
     <div class="scroll-cue" aria-hidden="true"><span></span></div>
   </section>
